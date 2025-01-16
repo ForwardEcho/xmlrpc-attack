@@ -48,6 +48,12 @@ options:
    ```
 
 Example :
+List Supported Method
+  ```
+  python xmlrpcattack.py --url https://example.com/xmlrpc.php -l
+
+  ```
+`demo.sayHello` method :
   ```
   python xmlrpcattack.py --url https://example.com/xmlrpc.php -m demo.sayHello
   ```
