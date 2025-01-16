@@ -22,4 +22,4 @@ Jalankan Program:
    python xmlrpcattack.py
    ```
 > [!IMPORTANT]\
-> The addition of licenses to Simple Icons is an ongoing project. Hence, the absence of licence data for a particular icon does not imply that the icon is not released under a license.
+> Proyek ini hanya untuk tujuan pendidikan dan pengujian keamanan! Penulis tidak bertanggung jawab atas penyalahgunaan alat ini. Pastikan Anda memiliki izin sebelum menguji situs web apa pun.
