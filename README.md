@@ -11,15 +11,40 @@
 ## Instalasi
 Pastikan Anda memiliki **Python 3.8** atau versi yang lebih baru.
 
-Clone repository ini:
+Clone repository ini :
    ```bash
    git clone https://github.com/ForwardEcho/xmlrpc-attack.git
    cd xmlrpc-attack
    ```
 
-Jalankan Program:
+Usage :
    ```bash
-   python xmlrpcattack.py
+   python xmlrpcattack.py -h
+
+    ██╗  ██╗███╗   ███╗██╗     ██████╗ ██████╗  ██████╗     █████╗ ████████╗████████╗ █████╗  ██████╗██╗  ██╗
+    ╚██╗██╔╝████╗ ████║██║     ██╔══██╗██╔══██╗██╔════╝    ██╔══██╗╚══██╔══╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
+     ╚███╔╝ ██╔████╔██║██║     ██████╔╝██████╔╝██║         ███████║   ██║      ██║   ███████║██║     █████╔╝ 
+     ██╔██╗ ██║╚██╔╝██║██║     ██╔══██╗██╔═══╝ ██║         ██╔══██║   ██║      ██║   ██╔══██║██║     ██╔═██╗ 
+    ██╔╝ ██╗██║ ╚═╝ ██║███████╗██║  ██║██║     ╚██████╗    ██║  ██║   ██║      ██║   ██║  ██║╚██████╗██║  ██╗
+    ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝    ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   
+
+    Author: ForwardEcho
+    Version: 1.0
+    Description: Simple XML-RPC client for testing purposes. 
+
+usage: xmlrpcattack.py [-h] -u URL [-l] [-m METHOD] [params ...]
+
+XML-RPC client
+
+positional arguments:
+  params                Parameters for the method (optional)
+
+options:
+  -h, --help            show this help message and exit
+  -u URL, --url URL     URL of the XML-RPC server
+  -l, --list            List available methods
+  -m METHOD, --method METHOD
+                        Method to call
    ```
 > [!IMPORTANT]\
 > Proyek ini hanya untuk tujuan pendidikan dan pengujian keamanan! Penulis tidak bertanggung jawab atas penyalahgunaan alat ini. Pastikan Anda memiliki izin sebelum menguji situs web apa pun.
