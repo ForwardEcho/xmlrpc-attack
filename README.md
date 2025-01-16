@@ -46,5 +46,11 @@ options:
   -m METHOD, --method METHOD
                         Method to call
    ```
+
+Example :
+  ```
+  python xmlrpcattack.py --url https://example.com/xmlrpc.php -m demo.sayHello
+  ```
+
 > [!IMPORTANT]\
 > Proyek ini hanya untuk tujuan pendidikan dan pengujian keamanan! Penulis tidak bertanggung jawab atas penyalahgunaan alat ini. Pastikan Anda memiliki izin sebelum menguji situs web apa pun.
