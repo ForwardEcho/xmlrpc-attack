@@ -21,18 +21,19 @@ Usage :
    ```bash
    python xmlrpcattack.py -h
 
+
     ██╗  ██╗███╗   ███╗██╗     ██████╗ ██████╗  ██████╗     █████╗ ████████╗████████╗ █████╗  ██████╗██╗  ██╗
     ╚██╗██╔╝████╗ ████║██║     ██╔══██╗██╔══██╗██╔════╝    ██╔══██╗╚══██╔══╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
-     ╚███╔╝ ██╔████╔██║██║     ██████╔╝██████╔╝██║         ███████║   ██║      ██║   ███████║██║     █████╔╝ 
-     ██╔██╗ ██║╚██╔╝██║██║     ██╔══██╗██╔═══╝ ██║         ██╔══██║   ██║      ██║   ██╔══██║██║     ██╔═██╗ 
+     ╚███╔╝ ██╔████╔██║██║     ██████╔╝██████╔╝██║         ███████║   ██║      ██║   ███████║██║     █████╔╝
+     ██╔██╗ ██║╚██╔╝██║██║     ██╔══██╗██╔═══╝ ██║         ██╔══██║   ██║      ██║   ██╔══██║██║     ██╔═██╗
     ██╔╝ ██╗██║ ╚═╝ ██║███████╗██║  ██║██║     ╚██████╗    ██║  ██║   ██║      ██║   ██║  ██║╚██████╗██║  ██╗
-    ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝    ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   
+    ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝    ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
 
     Author: ForwardEcho
     Version: 1.0
-    Description: Simple XML-RPC client for testing purposes. 
+    Description: Simple XML-RPC client for testing purposes.
 
-usage: xmlrpcattack.py [-h] -u URL [-l] [-m METHOD] [params ...]
+usage: xmlrpcattack.py [-h] -u URL [-U USER] [-P PASSWORDS] [-l] [-m METHOD] [params ...]
 
 XML-RPC client
 
@@ -41,10 +42,12 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  -u URL, --url URL     URL of the XML-RPC server
+  -u, --url URL         URL of the XML-RPC server
+  -U, --user USER       Username for brute force (required for brute force)
+  -P, --passwords PASSWORDS
+                        File containing passwords for brute force
   -l, --list            List available methods
-  -m METHOD, --method METHOD
-                        Method to call
+  -m, --method METHOD   Method to call
    ```
 
 Example :
