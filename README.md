@@ -3,7 +3,7 @@
 **XMLRPC-Attack** adalah sebuah alat untuk mengidentifikasi dan mengeksploitasi kerentanan pada protokol XML-RPC yang sering digunakan oleh platform web seperti WordPress. Proyek ini bertujuan untuk membantu peneliti keamanan dalam menguji aplikasi web terhadap serangan brute force dan eksploitasi lainnya melalui endpoint XML-RPC.
 
 ## Fitur
-- **Deteksi Endpoint XML-RPC**: Mendeteksi endpoint XML-RPC yang aktif pada suatu website.
+<!--- **Deteksi Endpoint XML-RPC**: Mendeteksi endpoint XML-RPC yang aktif pada suatu website.-->
 - **Brute Force Login**: Melakukan serangan brute force pada metode `system.multicall`.
 - **DOS (Denial of Service)**: Mengeksploitasi kelemahan XML-RPC untuk melakukan serangan DOS.
 - **Report Hasil**: Menyediakan laporan hasil serangan dalam format yang mudah dibaca.
